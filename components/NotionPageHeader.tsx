@@ -6,8 +6,11 @@ import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import cs from 'classnames'
 import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 
+
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
+import { useRouter } from "next/router";
+// import { usePath } from "next/router";
 
 import styles from './styles.module.css'
 
@@ -38,15 +41,22 @@ export const NotionPageHeader: React.FC<{
 }> = ({ block }) => {
   const { components, mapPageUrl } = useNotionContext()
 
+  const router = useRouter();
+  const path = router.asPath; // 获取当前页面的路径
+  console.log(path)
+
   if (navigationStyle === 'default') {
-    return <Header block={block} />
+    return (
+      <Header block={block} />
+    )
   }
 
   return (
     <header className='notion-header'>
       <div className='notion-nav-header'>
-        <Breadcrumbs block={block} rootOnly={true} />
-
+        
+        <Breadcrumbs block={block} rootOnly={false} />
+        {path !== '/' && <div onClick={() => router.push('/')} className='header-back'>{`XiaoboTalk`}</div>}
         <div className='notion-nav-header-rhs breadcrumbs'>
           {navigationLinks
             ?.map((link, index) => {

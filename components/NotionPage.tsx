@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import cs from 'classnames'
+import { parsePageId } from 'notion-utils'
 import { PageBlock } from 'notion-types'
 import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
 import BodyClassName from 'react-body-classname'
@@ -19,7 +20,8 @@ import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 // import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
-import { Footer } from './Footer'
+// import { Footer } from './Footer'
+
 // import { GitHubShareButton } from './GitHubShareButton'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
@@ -70,6 +72,14 @@ const Code = dynamic(() =>
     ])
     return m.Code
   })
+)
+
+const TwikooClient = dynamic(() => 
+  import('./Twikoo').then((m) => m.Twikoo)
+)
+
+const Footer = dynamic(() => 
+  import('./Footer').then((m) => m.Footer)
 )
 
 const Collection = dynamic(() =>
@@ -185,8 +195,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
 
-  // const isRootPage =
-  //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
+  const isRootPage =
+    parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
 
@@ -200,8 +210,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
   //   [block, recordMap, isBlogPost]
   // )
 
-  const footer = React.useMemo(() => <Footer />, [])
+  // const footer = React.useMemo(() => <Footer />, [])
 
+  console.log("isBlogPost", isBlogPost);
+  console.log("isRootPage", isRootPage);
   if (router.isFallback) {
     return <Loading />
   }
@@ -278,10 +290,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapImageUrl={mapImageUrl}
         // searchNotion={config.isSearchEnabled ? searchNotion : null}
         // pageAside={pageAside}
-        footer={footer}
+        // footer={footer}
       />
-
+      {
+        !isRootPage && (
+          <TwikooClient />
+        )
+      }
+      
       {/* <GitHubShareButton /> */}
+      <Footer />
     </>
   )
 }

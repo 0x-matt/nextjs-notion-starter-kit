@@ -7,6 +7,36 @@
  * places to add some flare.
  */
 
+ .twikoo-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+ }
+.twikoo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.twikoo-divider-bottom {
+  width: 80%;
+  height: 1px;
+  background-color: rgb(222, 229, 235);
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
+.twikoo-divider {
+  width: 80%;
+  height: 1px;
+  background-color: rgb(222, 229, 235);
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
 .notion {
   --notion-max-width: 720px;
   --notion-header-height: 54px;
@@ -46,6 +76,11 @@
 .notion-header .notion-nav-header {
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.header-back {
+  font-size: medium;
+  font: bold;
 }
 
 .notion-nav-header-rhs {
@@ -358,6 +393,7 @@
 
 .notion-header {
   background: hsla(0, 0%, 100%, 0.8);
+  /* background: rgb(243, 244, 246); */
   backdrop-filter: saturate(180%) blur(16px);
 }
 

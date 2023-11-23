@@ -2,12 +2,13 @@ import React, { useEffect } from 'react'
 
 export const Twikoo: React.FC = () => {
   useEffect(() => {
+    // 通过 CDN 引入 twikoo js 文件
     const cdnScript = document.createElement('script')
     cdnScript.src = 'https://cdn.staticfile.org/twikoo/1.6.25/twikoo.all.min.js'
     cdnScript.async = true
 
     const loadSecondScript = () => {
-      // 创建一个 <script> 标签用于执行第二段代码
+      // 执行 twikoo.init() 函数
       const initScript = document.createElement('script')
       initScript.innerHTML = `
             twikoo.init({
@@ -16,17 +17,13 @@ export const Twikoo: React.FC = () => {
             });
           `
       initScript.id = 'twikoo-init-id' // 添加唯一的 ID
-      // 将第二个脚本标签添加到页面
       document.body.appendChild(initScript)
     }
 
-    // 监听第一个外部脚本的加载完成事件
+    // 在 twikoo js 文件加载完成后，再加载执行 twikoo.init() 函数的 js 文件
     cdnScript.addEventListener('load', loadSecondScript)
-
-    // 将第一个脚本标签添加到页面
     document.body.appendChild(cdnScript)
 
-    // 可选：在组件卸载时移除脚本标签，避免内存泄漏
     return () => {
       if (loadSecondScript) {
         cdnScript.removeEventListener('load', loadSecondScript)

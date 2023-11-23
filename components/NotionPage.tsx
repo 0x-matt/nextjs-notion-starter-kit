@@ -27,6 +27,7 @@ import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
 // import { PageAside } from './PageAside'
+import { Analytics } from '@vercel/analytics/react';
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
@@ -297,7 +298,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
           <TwikooClient />
         )
       }
-      
+      <Analytics />
       {/* <GitHubShareButton /> */}
       <Footer />
     </>

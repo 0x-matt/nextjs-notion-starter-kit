@@ -12,6 +12,7 @@ export default siteConfig({
   name: 'xiaobotalk',
   domain: 'www.xiaobotalk.com',
   author: 'matt',
+  beian: '蒙ICP备18005141号-1',
 
   // open graph metadata (optional)
   description: 'Example Next.js Notion Starter Kit Site',

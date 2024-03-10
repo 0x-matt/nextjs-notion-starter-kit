@@ -1,12 +1,12 @@
 import * as React from 'react'
 
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
+// import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
+// import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
-import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
+// import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 
@@ -35,7 +35,7 @@ export const FooterImpl: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2022 {config.author}</div>
+      <div className={styles.copyright}>Copyright 2022 {config.beian}</div>
 
       <div className={styles.settings}>
         {hasMounted && (
@@ -52,7 +52,7 @@ export const FooterImpl: React.FC = () => {
       </div>
 
       <div className={styles.social}>
-        {config.twitter && (
+        {/* {config.twitter && (
           <a
             className={styles.twitter}
             href={`https://twitter.com/${config.twitter}`}
@@ -62,7 +62,7 @@ export const FooterImpl: React.FC = () => {
           >
             <FaTwitter />
           </a>
-        )}
+        )} */}
 
         {config.mastodon && (
           <a
@@ -75,7 +75,7 @@ export const FooterImpl: React.FC = () => {
           </a>
         )}
 
-        {config.zhihu && (
+        {/* {config.zhihu && (
           <a
             className={styles.zhihu}
             href={`https://zhihu.com/people/${config.zhihu}`}
@@ -85,9 +85,9 @@ export const FooterImpl: React.FC = () => {
           >
             <FaZhihu />
           </a>
-        )}
+        )} */}
 
-        {config.github && (
+        {/* {config.github && (
           <a
             className={styles.github}
             href={`https://github.com/${config.github}`}
@@ -97,7 +97,7 @@ export const FooterImpl: React.FC = () => {
           >
             <FaGithub />
           </a>
-        )}
+        )} */}
 
         {config.linkedin && (
           <a
